@@ -5,8 +5,6 @@ import game_string
 import json
 import os
 
-#tes
-
 player1 = {
     'Ability' : {
         'Strength' : 2,
@@ -292,3 +290,4 @@ def main():
 
 
 main()
+
