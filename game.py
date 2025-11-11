@@ -37,6 +37,13 @@ json_path = os.path.join(os.path.dirname(__file__), "savefiles", "current_progre
 enemy = dict()
 d_weapon_damage = game_env.weapon[player1['Equipment']['Weapon']]
 help_command = game_string.help_command
+
+#------------------------Save functions----------------------
+def save(state):
+    with open("current_progress.json", "w") as file:
+        save_state = json.dumps(state)
+        file.write(save_state)
+
 #------------------------Else functions----------------------
 
 def delay(sec): #ini fungsi delay, nanti penggunaannya delay(detik)
@@ -233,6 +240,10 @@ def enemy_handler(): #ini buat ngejalanin musuh. jadi musuh nyerang sama mati ad
     else:
         print(f'{enemy['Name']} mencoba menyerang kamu, tetapi tidak kena!')
 
+def save_handler():
+    save(player1)
+    print('Progres anda telah di save')
+
 #------------------------Command maps----------------------
 #jadi bakal ngejalanin fungsi sesuai input pemain
 command_map = { #ini command saat ngga combat
@@ -240,6 +251,7 @@ command_map = { #ini command saat ngga combat
     'exit': exit_handler,
     'cek': lambda arg= None: cek_handler(arg) if arg else print('Kategori harus disebutkan. ketik "help cek"'),
     'help': lambda arg= None: help_handler(arg) if arg else print('Kategori harus disebutkan.'),
+    'save': save_handler
 }
 
 combat_command = { #ini command saat combat
