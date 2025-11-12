@@ -38,12 +38,12 @@ d_weapon_damage = game_env.weapon[player1['Equipment']['Weapon']]
 help_command = game_string.help_command
 
 #------------------------Save and load functions----------------------
-def save(state):
+def save(state):#tambah savean ke current_progress.json
     with open("current_progress.json", "w") as file:
         save_state = json.dumps(state)
         file.write(save_state)
 
-def load():
+def load():#load savean dari current_progress.json
     with open("current_progress.json") as file:
         save_state = json.load(file)
         global player1
@@ -342,3 +342,4 @@ main()
 
 #okeoke
 #bagian spell nya belom gw koding jadi error
+
